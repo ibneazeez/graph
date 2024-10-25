@@ -1,0 +1,42 @@
+# Product Type Definition
+type Product {
+    id: ID!
+    name: String!
+    category: String!
+    price: Float
+    stockQuantity: Int
+}
+
+# Offers Type Definition
+type Offers {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    ssn: String
+    dob: String
+    status: String
+}
+
+# Queries for both Products and Offers
+type Query {
+    # Product Queries
+    getAllProducts: [Product]
+    getProductById(id: ID!): Product
+    
+    # Offers Queries
+    getAllOffers: [Offers]
+    getOfferById(id: ID!): Offers
+}
+
+# Mutations for both Products and Offers
+type Mutation {
+    # Product Mutations
+    createProduct(name: String!, category: String!, price: Float, stockQuantity: Int): Product
+    updateProduct(id: ID!, name: String, category: String, price: Float, stockQuantity: Int): Product
+    deleteProduct(id: ID!): Boolean
+
+    # Offers Mutations
+    createOffer(firstName: String!, lastName: String!, ssn: String, dob: String, status: String): Offers
+    updateOffer(id: ID!, firstName: String, lastName: String, ssn: String, dob: String, status: String): Offers
+    deleteOffer(id: ID!): Boolean
+}
